@@ -55,7 +55,7 @@ def geometry():
             output.append({"x": x, "y": y})
 
     logging.info("My result :{}".format(output))
-    return json.dumps(output)
+    return output
 
 
 
