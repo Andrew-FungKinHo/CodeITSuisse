@@ -50,9 +50,10 @@ def geometry():
         x = round((c*e - b*f) / det, 2)
         y = round((a*f - c*d) / det, 2)
         # Does it lie on the line segment?
-        if min(p1["x"], p2["x"]) <= x <= max(p1["x"], p2["x"]) and \
-            min(p1["y"], p2["y"]) <= y <= max(p1["y"], p2["y"]):
-            output.append({"x": x, "y": y})
+        if min(p1["x"], p2["x"]) <= x <= max(p1["x"], p2["x"]) and min(p1["y"], p2["y"]) <= y <= max(p1["y"], p2["y"]):
+            point = {"x": x, "y": y}
+            if point not in output:
+                output.append(point)
     return jsonify(output)
 
 
