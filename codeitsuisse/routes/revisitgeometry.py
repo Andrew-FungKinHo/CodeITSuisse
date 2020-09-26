@@ -53,7 +53,7 @@ def geometry():
         if min(p1["x"], p2["x"]) <= x <= max(p1["x"], p2["x"]) and \
             min(p1["y"], p2["y"]) <= y <= max(p1["y"], p2["y"]):
             output.append({"x": x, "y": y})
-    return output
+    return jsonify(output)
 
 
 
