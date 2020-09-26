@@ -30,7 +30,14 @@ def saladSpree():
         smallest = getItemSmallest(data['salad_prices_street_map'][j],data['number_of_salads'])
         if smallest < listSmallest and smallest > 0:
             listSmallest = smallest
-    return jsonify(listSmallest)
+    if listSmallest == math.inf:
+        # print(0)
+        output = {'result': 0}
+    else:
+        # print(listSmallest)
+        output =  {'result': listSmallest}
+        
+    return jsonify(output)
 
 
 
