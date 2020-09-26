@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def getItemSmallest(item,number_of_salads):
   itemSmallest = math.inf
   startingPoint = 0
-  for i in range(len(item) - number_of_salads + 1):
+  for _ in range(len(item) - number_of_salads + 1):
     sublist = item[startingPoint:startingPoint + number_of_salads]
     if 'X' not in sublist:
       sublist = list(map(int, sublist)) 
@@ -30,7 +30,7 @@ def saladSpree():
         smallest = getItemSmallest(data['salad_prices_street_map'][j],data['number_of_salads'])
         if smallest < listSmallest and smallest > 0:
             listSmallest = smallest
-    return json.dumps(listSmallest)
+    return jsonify(listSmallest)
 
 
 
