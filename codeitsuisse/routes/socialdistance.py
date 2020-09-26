@@ -30,8 +30,8 @@ def social_distancing():
     data = request.get_json()
     print(data)
     answers = {}
-    for i in range(len(data["tests"])):
-        answers[str(i)] = ways_of_sitting(data['tests'][str(i)]['seats'],data['tests'][str(i)]['people'],data['tests'][str(i)]['spaces'])
+    for key, value in data['tests'].items():
+        answers[key] = ways_of_sitting(value['seats'],value['people'],value['spaces'])
     solution = {'answers': answers}
     return jsonify(solution)
 
