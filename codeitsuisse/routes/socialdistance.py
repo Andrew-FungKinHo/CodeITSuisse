@@ -1,21 +1,13 @@
 import logging
 import json
-
+from scipy.special import comb
 from flask import request, jsonify
+
 
 from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
-def nCr(n, r):
-    result = 1
-    # nPr = n! / (n-r)!
-    for i in range(n, n-r, -1):
-        result *= i
-    # nCr = nPr / r!
-    for i in range(1, r+1):
-        result //= i
-    return result
 
 def ways_of_sitting(seats, people, space):
     # Minimum seats: PSPSP...
@@ -28,7 +20,8 @@ def ways_of_sitting(seats, people, space):
         # How many we need to choose (value of r)
         choose = seats - min_seats
         # Number of combinations with replacement is nCr(n+r-1, r)
-        return nCr(slots + choose - 1, choose)
+        #return nCr(slots + choose - 1, choose)
+        return comb(slots + choose - 1, choose, exact=True)
     else:
         return 0
 
