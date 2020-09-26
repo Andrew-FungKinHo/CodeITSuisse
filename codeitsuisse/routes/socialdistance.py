@@ -25,12 +25,15 @@ def ways_of_sitting(seats, people, space):
       count += ways_of_sitting(seats - 1 - space - i, people - 1, space)
   return count
 
-# @app.route('/social_distancing', methods=['POST'])
-# def geometry():
-#     data = request.get_json()
-#     output = {"answers": }
-#     output.append({"x": x, "y": y})
-#     return jsonify(output)
+@app.route('/social_distancing', methods=['POST'])
+def social_distancing():
+    data = request.get_json()
+    print(data)
+    answers = {}
+    for i in range(len(data["tests"])):
+        answers[str(i)] = ways_of_sitting(data['tests'][str(i)]['seats'],data['tests'][str(i)]['people'],data['tests'][str(i)]['spaces'])
+    solution = {'answers': answers}
+    return jsonify(solution)
 
 
 
