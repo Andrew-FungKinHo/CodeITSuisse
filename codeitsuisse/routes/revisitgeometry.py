@@ -29,13 +29,13 @@ def geometry():
     # lineCoordinates = data.get("lineCoordinates")
 
     # Equation of input line
-    a, b, c, = get_line_eq(data.get("lineCoordinates")[0], data.get("lineCoordinates")[1])
+    a, b, c, = get_line_eq(data["lineCoordinates"][0], data["lineCoordinates"][1])
 
     output = []
-    sides = len(data.get("shapeCoordinates"))
+    sides = len(data["shapeCoordinates"])
     for i in range(sides):
-        p1 = data.get("shapeCoordinates")[i]
-        p2 = data.get("shapeCoordinates")[(i+1)%sides]
+        p1 = data["shapeCoordinates"][i]
+        p2 = data["shapeCoordinates"][(i+1)%sides]
         d, e, f = get_line_eq(p1, p2)
 
         # According to Wolfram Alpha, given the lines ax+by=c and dx+ey=f, the

@@ -11,10 +11,17 @@ logger = logging.getLogger(__name__)
 def evaluate():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-    inputValue = data.get("input")
-    result = inputValue * inputValue
-    logging.info("My result :{}".format(result))
-    return json.dumps(result)
+    # logging.info(f"request {request}")
+
+    name = data['name']
+    location = data['location']
+
+    randomlist = data['randomlist']
+
+
+    # logging.info("My result :{}".format(result))
+    return jsonify({'result': 'Success!', 'name': name, 'location': location, 'randomkeyinlist': randomlist[1]})
+    # json.dumps(result)
 
 
 
